@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*<!--默认弹层不显示-->*/
+        .hide{
+            display: none;
+        }
+        .s1{
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: black;
+            opacity: 0.6;
+            z-index: 1;
+        }
+        .s2{
+            z-index: 2;
+            margin: auto;
+            position: absolute;
+            top: 5%;
+            left: 22%;
+            right: 22%;
+            bottom: 5%;
+            width: 56%;
+            height: 90%;
+            border-radius: 8px;
+            background-color: white;
+        }
+        .bu input{
+            width: 80px;
+            height: 40px;
+            background-color: blue;
+            color: aliceblue;
+            border-radius: 8px;
+            border-color: blue;
+            margin: auto 0;
+        }
+        .bu input:hover{
+            background-color: rgb(1, 1, 192);
+            box-shadow: 8px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="bu">
+    <input type="button" value="查看" onclick="showModel();"><br>
+</div>
+
+<!--第一个遮罩层-->
+<div class="s1 hide" id="r1" onclick="hideModel();"></div>
+
+<!--第二个输入框弹层-->
+<div class="s2 hide" id="r2">
+    <IFRAME src="img/ISO.pdf" id="ifrm" frameBorder="no" width="100%" scrolling="auto" height="100%" border-radius="8px" runat="server"></IFRAME>
+</div>
+<script>
+    function showModel() {
+        document.getElementById('r1').classList.remove('hide')
+        document.getElementById('r2').classList.remove('hide')
+    }
+    function hideModel() {
+        document.getElementById('r1').classList.add('hide')
+        document.getElementById('r2').classList.add('hide')
+    }
+    function chooseall() {
+        var tbody = document.getElementById('td');
+        var tr_list = tbody.children;
+        for (var i = 0;i<tr_list.length;i++){
+            var current_tr = tr_list[i];
+            var checkbox = current_tr.children[0].children[0];
+            checkbox.checked = true;
+        }
+    }
+    function cancelall() {
+        var tbody = document.getElementById('td');
+        var tr_list = tbody.children;
+        for (var i = 0;i<tr_list.length;i++){
+            var current_tr = tr_list[i];
+            var checkbox = current_tr.children[0].children[0];
+            checkbox.checked = false;
+        }
+    }
+    function reversall() {
+        var tbody = document.getElementById('td');
+        var tr_list = tbody.children;
+        for (var i = 0;i<tr_list.length;i++){
+            var current_tr = tr_list[i];
+            var checkbox = current_tr.children[0].children[0];
+            if (checkbox.checked == true){
+                checkbox.checked = false;
+            }else {
+                checkbox.checked = true;
+            }
+        }
+    }
+</script>
+</body>
+</html>
